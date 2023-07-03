@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+group 'net.rapust'
+version '1.0-RELEASE'
+
+repositories {
+    // spigot
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+
+    // mojang
+    maven { url = 'https://libraries.minecraft.net/' }
+
+    // other
+    flatDir {
+        dirs 'libs'
+    }
+
+    // maven
+    mavenLocal()
+    mavenCentral()
+}
+
+build {
+    dependsOn(shadowJar)
+}
+
+shadowJar {
+    getDestinationDirectory().set(new File("${projectDir}", "output"))
+    archiveFileName.set("${project.name}.jar")
+    filesMatching('plugin.yml') {
+        filter {
+            it.replace('(project_version)', "${project.version}")
+        }
+    }
+}
+
+dependencies {
+    // core
+    compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
+    compileOnly 'com.mojang:authlib:1.5.21'
+
+    // plugins
+    compileOnly name: 'PlotSquared-Bukkit-6.9.3-Premium'
+    compileOnly name: 'worldedit-bukkit-7.2.12'
+    compileOnly name: 'Vault'
+    compileOnly name: 'PlaceholderAPI-2.11.2'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}

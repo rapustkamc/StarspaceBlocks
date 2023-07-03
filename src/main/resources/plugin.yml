@@ -1,0 +1,21 @@
+name: StarspaceBlocks
+main: net.rapust.starspaceblocks.StarspaceBlocks
+version: (project_version)
+api-version: 1.18
+
+load: POSTWORLD
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - WorldEdit
+  - PlotSquared
+
+author: rapustka#3096
+
+commands:
+  getblock:
+    usage: /getblock help
+    description: Info about element-blocks
+    permission: starspaceblocks.getblock
+    aliases:
+      - gb

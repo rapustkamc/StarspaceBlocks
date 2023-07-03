@@ -1,0 +1,79 @@
+commands:
+  getblock:
+    prefix: "&8[&9StarspaceBlocks&8] &r"
+    help: "&eUsage:\n &8- &a/getblock &9info &c[nameId] &8- &eInfo about that element-block\n &8- &a/getblock &9get &c[nameId] &8- &eGet that element-block\n &8- &a/getblock &9list &8- &eList of available element-blocks"
+    notFound: "&cElement-block with nameId &e%nameId% &cnot found!"
+    alreadyCreating: "&cYou are already creating a element-block!"
+    cantHold: "&cYou don't have space in your inventory!"
+    success: "&aYou generated an element-block!"
+    cantChange: "&cYou can not change field &e%field%&c!"
+    missingArguments: "&cYou have to specify field &e%field% &cbecause it is required!"
+    error: "&cError while creating a block! Message: %error%"
+    listTitle: "&aAvailable element-blocks:"
+    listString: "  &8- &e%nameId% &8- &a%name% &8(&7%string%&8)"
+
+input:
+  prefix: "&8[&9StarspaceBlocks&8] &r"
+  title: "%prefix%&aInput for:"
+  action: " &7-> &eAction: &a%name% &7(&f%type%&7) &8- &7%value%"
+  field: " &7-> &eField: &a%type% &8(&c%rawType%&8)"
+  comment: " &7> &eComment: &a%comment%"
+  canIgnore: " &7> &eOr enter &c- &ato use the default &8(&e%default%&8)"
+  shouldSpecify: "&cIt is a required field! You should specify it."
+  errorUnknown: "&cUnknown error! Ask an administrator. Message: %error%"
+  errorAction: "&cError while adding an action: %error%"
+  errorField: "&cError while adding this field! Message: %error%"
+  finish: "&aYou finished creating a block!"
+  next:
+    - "{title}"
+    - "{action}"
+    - "{field}"
+    - "{comment}"
+    - "{canIgnore}"
+  errors:
+    strToInt: "&cYou should specify number, not '&e%str%&c'!"
+    effect:
+      values: "&cYou should specify 3 values splitted by ':'! (effect:duration:amplifier)"
+      type: "&cUnknown effect type '&e%type%&c'!"
+    mob:
+      type: "&cUnknown mob type '&e%type%&c'!"
+
+messages:
+  prefix: "&8[&9StarspaceBlocks&8] &r"
+  cantHold: "&cYou don't have space in your inventory!"
+  cantBreak: "&cYou can't break this block!"
+  trouble: "&cThere was an error while executing your block!\n&7NameID: &f%nameId%\n&7Location: &f%location%\n&fError: &f%error%\n&cIf you don't know what it means, ask an administrator!"
+  infoTitle: "&aInfo about block &e%nameId%&a:"
+  info:
+    - "&eNameID: &a%nameId%"
+    - "&eName: &a%name%"
+    - "&eElement: &a%elementString%"
+    - "{elementInputFields}"
+    - "&eActions:"
+    - "{actions}"
+
+sounds:
+  get: BLOCK_NOTE_BLOCK_BELL
+  broke: BLOCK_NOTE_BLOCK_BELL
+  cantBreak: BLOCK_NOTE_BLOCK_BASS
+  input: BLOCK_NOTE_BLOCK_PLING
+
+strings:
+  elementString: "&9%element%"
+  elementFieldStringOptional: "  &8- &7[%field%] &8- &7(&fDefault: &e%default%&7) &f%comment%"
+  elementFieldStringRequired: "  &8- &7[%field%] &8- &7(&c&nrequired&7) &f%comment% "
+  elementFieldStringStrong: "  &8- &7[%field%] &8- &c&lnon-changeable &7(&fValue: &e%value%&7)"
+  actionString: "  &8- &a%name% &7(&f%type%&7) &8- &7%value%"
+  actionFieldStringOptional: "    &8- &7[%field%] &8- &7(&fDefault: &e%default%&7) &f%comment% "
+  actionFieldStringRequired: "    &8- &7[%field%] &8- &7(&c&nrequired&7) &f%comment% "
+
+items:
+  block:
+    lore:
+      - ""
+      - "&aElement:"
+      - "{element}"
+      - ""
+      - "&eActions:"
+      - "{actions}"
+      - ""

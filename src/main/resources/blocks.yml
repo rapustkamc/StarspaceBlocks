@@ -1,0 +1,38 @@
+first:
+  name: "&aJump block!"
+  material: EMERALD_BLOCK
+  element: "JUMP-[radius|5;Radius of jump]"
+  actions:
+    '1':
+      name: "Command"
+      type: COMMAND
+      value: "[command|give %player% minecraft:diamond;Executed command]"
+    '2':
+      name: "Any effect"
+      type: EFFECT
+      value: "[effect]"
+
+second:
+  name: "&eClick block!"
+  material: GOLD_BLOCK
+  element: "L-CLICKS-BLOCK"
+  delay: 10
+  actions:
+    '1':
+      name: "Set 20 health"
+      type: SET-HEALTH
+      value: "20"
+    '2':
+      name: "Speed for all plot"
+      type: EFFECT-ON-PLOT
+      value: "speed:3:3"
+
+third:
+  name: "&9Hologram"
+  material: DIAMOND_BLOCK
+  element: "ONE-LINE-HOLOGRAM-&ahi"
+
+fourth:
+  name: "&9Mob"
+  material: STONE
+  element: "SHOW-MOB-[mob|ZOMBIE;Mob]-[command|say hi;Command]"
